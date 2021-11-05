@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/navbar.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/buttons.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<style>
+	#homepagetitle{
+		padding-top: 15%;
+	}
+	#twocolumnmain {
+		text-align: left;
+	}
+	@media (max-width: 600px) {
+		#homepagetitle{
+			padding-top: 30%;
+		}
+		#twocolumnmain {
+			text-align: center;
+		}
+	}
+	</style>
+	{% include 'myenglishmate/navbar_loggedout.html' %}
+	<div class = "row">
+	<div class="main01 container-fluid" id="homepagetitle">
+  		<div class="content-block">
+  			<p class="title">Leverage Technology For Your Language Learning!</p>
+  			<div class="row">
+  				<div class="col">
+  					<a><i class="fas fa-cloud-download-alt fa-5x" style="margin-top: 20px; margin-bottom: 10px;"></i></a>
+  					<p class="content">Add expressions you want to remember<br>to your own database.</p>
+  				</div>
+	  			<div class="col">
+	  				<a><i class="fas fa-search fa-5x" style="margin-top: 10px; margin-bottom: 20px;"></i></a>
+	  				<p class="content">Search expressions <br> whenever you want to remind them.</p>
+	  			</div>
+	  			<div class="col">
+	  				<a><i class="fas fa-graduation-cap fa-5x" style="margin-top: 20px; margin-bottom:10px;"></i></a>
+	  				<p class="content">Reinforce your learning <br> by taking quizzes.</p>
+	  			</div>
+	  		</div>
+  			<div class="button">
+  				<a href="{% url 'login' %}">
+				<button type="button" id="addbtn" class="btn btn-warning" style="margin-top: 30px; padding-left:20px; padding-right:20px; padding-top:15px; padding-bottom:15px; font-weight: bold;">Get Started</button></a>
+			</div>
+  		</div>
+	</div>
+	</div>
+	<div class="row">
+		<div class="main02 container-fluid">
+			<div class="content-block">
+				<p class="title">Create and Manage your language database</p>
+				<p class="content">Are you still using notebooks for language learning? <br> Add expressions and vocabularies whenever you want to a single consolidated database <br> and keep managing your current learning status!</p>
+				<img src="{% static 'images/dashboard_example.JPG' %}" alt="" style="width: 100%; height: 100%; margin-top:20px; box-shadow: 3px 3px 5px #bfbfbf;">
+			</div>
+		</div>	
+	</div>
+	<div class="row main03 container-fluid">
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<div class="content-block" id="twocolumnmain" style="margin-left: 5%; margin-right: 5%;">
+				<p class="title">Search Expressions</p>
+				<p class="content">You can search expressions whenever you want to remind them. <br> You don't have to google search or go over your past notes anymore!</p>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12" id="twocolumnmain" >
+			<img src="{% static 'images/search.JPG' %}" alt="" style="width: 100%; height: 100%;">
+		</div>
+	</div>
+	<div class="main04 container-fluid">
+		<div class="content-block">
+			<p class="title">Take Quizzes</p>
+			<p class="content">Effectively practice expressions on your database by taking quizzes. <br>
+			<div id="carouselExampleSlidesOnly" class="carousel slide start-50 translate-middle-x" data-bs-ride="carousel">
+  				<div class="carousel-inner">
+    				<div class="carousel-item active">
+      					<img src="{% static 'images/quiz-1.JPG' %}" alt="" style="width: 100%; height: 100%;">
+    				</div>
+    				<div class="carousel-item">
+						<img src="{% static 'images/quiz-2.JPG' %}" alt="" style="width: 100%; height: 100%;">
+    				</div>
+  				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'myenglishmate/footer.html' %}
+</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+</html>

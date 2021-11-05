@@ -1,0 +1,22 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg position-fixed top-0">
+	<div class="nav container-fluid position-fixed top-0 py-3">
+	    <a href="{%url 'home' %}"><img src="{% static 'images/logo2.png' %}" alt="" width="147" height="60" style="margin-left: 10%;"></a>
+	    
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:#fff;"></i></span>
+      	</button>
+
+	    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	      	<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+	            <li class="nav-item">
+	                <a class="nav-link text-nowrap" href="{% url 'login' %}" style="color:#fff;">Log in</a>
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link text-nowrap" href="{% url 'register' %}" style="color:#fff;">Sign in</a>
+	            </li>
+	        </ul> 
+		</div>
+	</div>
+</nav>
+

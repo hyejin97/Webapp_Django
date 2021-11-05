@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+  <title>home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/navbar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/buttons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body style="height:100%;">
+	<style>
+	#dashboardtitle{
+	padding-top: 30px;
+	}
+
+	@media (max-width: 600px) {
+		#dashboardtitle{
+			padding-top: 100px;
+		}
+	}
+	</style>
+	{% include 'myenglishmate/navbar.html' %}
+	{% include 'myenglishmate/mobilebar.html' %}
+	<div class="row" style="height: 100%;">
+		{% include 'myenglishmate/sidebar.html' %}
+		<div class="col-md-10 dash-form">
+			<h3 class ="cardtitle" id="dashboardtitle">Hello, {{username}}</h3>
+			<div class="row">
+				<div class="col-md d-flex justify-content-center">
+		  		<div class="card w-100">
+		  			<div class="card-body" style="background-color: #fcfcfc; box-shadow: 3px 3px 5px #bfbfbf;">
+		    		<h5 class="card-title">My vocab/expressions</h5>
+		    		<h3 class="card-text" style="text-align: right; padding-right: 20px; margin-top: 60px;">{{total}}</h3>
+		  			</div>
+					</div>
+				</div>
+				<div class="col-md d-flex justify-content-center">
+					<div class="card w-100">
+		  			<div class="card-body" style="background-color: #fcfcfc; box-shadow: 3px 3px 5px #bfbfbf;">
+		    		<h5 class="card-title">Completed</h5>
+		    		<h3 class="card-text" style="text-align: right; padding-right: 20px; margin-top: 60px;">{{completed}}%</h3>
+		  			</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card w-100 justify-content-center" style="margin-left: 10px; margin-right:10px; margin-top: 10px; margin-bottom: 10px; background-color: #fcfcfc; box-shadow: 3px 3px 5px #bfbfbf; padding-top: 15px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px;">
+					<h5 class="card-title">Vocab/expressions registered per day</h5>
+					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+					<script type="text/javascript">
+						var labels = {{labels|safe}}
+						var datapoints = {{data_points|safe}}
+						//const labels = ['2021/08/30', '2021/08/29', '2021/08/28', '2021/08/27', '2021/08/26', '2021/08/25', '2021/08/24']
+						//const datapoints = [1, 2, 3, 4, 5, 6, 0]
+
+				  	window.onload = function () {
+				    var chart = new CanvasJS.Chart("chartContainer",
+				    {
+				       data: [
+				      {
+				        type: "line",
+				        dataPoints: [
+				        { x: new Date(labels[0]), y: datapoints[0] },
+				        { x: new Date(labels[1]), y: datapoints[1] },
+				        { x: new Date(labels[2]), y: datapoints[2] },
+				        { x: new Date(labels[3]), y: datapoints[3] },
+				        { x: new Date(labels[4]), y: datapoints[4] },
+				        { x: new Date(labels[5]), y: datapoints[5] },
+				        { x: new Date(labels[6]), y: datapoints[6] },
+				        ]
+				      }
+				      ]
+				    });
+
+				    chart.render();
+				  }
+				  </script>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

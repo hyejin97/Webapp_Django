@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+  <title>home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/navbar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/buttons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body style="height:100%;">
+  <style>
+  #dashboardtitle{
+  padding-top: 30px;
+  }
+
+  @media (max-width: 600px) {
+    #dashboardtitle{
+      padding-top: 100px;
+    }
+  }
+  </style>
+  {% include 'myenglishmate/navbar.html' %}
+  {% include 'myenglishmate/mobilebar.html' %}
+  <div class="row" style="height: 100%;">
+    {% include 'myenglishmate/sidebar.html' %}
+    <div class="col-md-10 dash-form" style="margin-bottom:40px;">
+      <h3 class = "cardtitle" id="dashboardtitle">Take a Quiz</h3>
+      <div class="card w-100">
+        <div class="card-body" style="background-color: #fcfcfc; box-shadow: 3px 3px 5px #bfbfbf;padding-top: 20px; padding-left:20px;">
+          {% if error == None %}
+          <form action="{% url 'quiz' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="completedonly">
+            <label class="form-check-label" for="flexCheckDefault">
+              Include only incompleted vocabs/expressions
+            </label>
+            </div>
+            <div class="container-fluid" style="margin-top: 40px; text-align: center;">
+              <button type="submit" class="btn btn-primary">Start</a>
+            </div>
+          </form>
+          {% else %}
+          <h6 class="card-title" style="text-align:center; margin-top: 40px; margin-bottom: 40px;">{{error}}</h6>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

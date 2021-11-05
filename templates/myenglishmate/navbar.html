@@ -1,0 +1,17 @@
+{% load static %}
+<div class="row">
+<nav class="navbar navbar-expand-lg position-fixed top-0">
+	<div class="nav container-fluid position-fixed top-0 py-3">
+	    <a href="{%url 'home' %}"><img src="{% static 'images/logo2.png' %}" alt="" width="147" height="60" style="margin-left: 5%;"></a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	      <div class="navbar-nav" id="menu">
+	        <a class="nav-link" aria-current="page" href="{%url 'home' %}" style="margin-left: 20%;">Dashboard</a>
+	      </div>
+	    </div>
+	    <span><a class="nav-link text-nowrap" href="{% url 'logout' %}" style="color:#fff; margin-right: 5%;">Log Out</a></span>
+	</div>
+</nav>
+</div>

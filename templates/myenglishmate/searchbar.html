@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="container" id="dashboardtitle" style="background-color: #fcfcfc; box-shadow: 3px 3px 5px #bfbfbf;">
+  <h3 class ="cardtitle" style="padding-top: 30px;">Search expressions</h3>
+  <form action="{%url 'search'%}", method="POST">
+  	{% csrf_token %} 
+	  <div class = "container-fluid" style="padding-top: 30px; padding-bottom: 50px;">
+	    <div class="input-group search">
+	      <input type="text" id="searchbar" name="kor_or_eng" placeholder="Search expressions..">
+	      <button type="submit" class="btn btn-warning" value="Submit" style="margin-left: 20px; border-radius: 5px;">Search</button>
+	    </div>
+	  </div>
+  </form>
+</div>
+
+
+

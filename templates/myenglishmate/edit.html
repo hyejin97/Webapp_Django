@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+  <title>home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/navbar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/buttons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="height:100%;">
+	<style>
+	#dashboardtitle{
+	padding-top: 30px;
+	}
+
+	@media (max-width: 600px) {
+		#dashboardtitle{
+			padding-top: 100px;
+		}
+	}
+	</style>
+	{% include 'myenglishmate/navbar.html' %}
+	{% include 'myenglishmate/mobilebar.html' %}
+	<div class="row" style="height:100%;">
+		{% include 'myenglishmate/sidebar.html' %}
+		<div class="col-md-10 dash-form">
+			<h3 class = "cardtitle" id="dashboardtitle">Edit expressions</h3>
+			<div class="card card-body">
+			    <form action="" method="POST" id="add">
+			  	  {% csrf_token %}
+				  <div class="form-group myinput">
+				    <label for="exampleFormControlTextarea1">English</label>
+				    <br>{{form.english}}<br>
+    				<!-- <textarea class="form-control" name="english" form="add" id="exampleFormControlTextarea1" rows="3" placeholder="Put an expression in English"></textarea> -->
+				  </div>
+				  <div class="form-group myinput">
+				  	<label for="exampleFormControlTextarea1">Korean</label>
+				  	<br>{{form.korean}}<br>
+				  	<!-- <textarea class="form-control" name="korean" form="add" id="exampleFormControlTextarea1" rows="3" placeholder="Put the meaning of expression in Korean"></textarea> -->
+				  </div>
+				  <div class="form-group myinput">
+				    <label for="exampleFormControlSelect2">Tags</label>
+				    <br>{{form.tags}}<br>
+			    </form>
+			    <!-- Button trigger modal -->
+				<button type="button" class="btn btn-light" style="margin-top: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				  Add a tag</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Add a tag</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <form action="" method="POST" id="addtag">
+				      	  {% csrf_token %}
+					      <div class="modal-body">
+					        <input type="text" form="addtag" name="tagname" class="form-control">
+					      </div>
+					  </form>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				        <button type="submit" form="addtag" class="btn btn-primary">Save</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div>
+			  <div class="inline-btn" style="text-align: center;">
+			  	<form action="{%url 'delete' item.id%}" method="POST" id="delete">{% csrf_token %}<button type="submit" form="delete" class="btn btn-danger" style="margin: auto; padding-left: 20px; padding-right: 20px;">Delete</button>
+			  	<button type="submit" id="addbtn" form="add" class="btn btn-primary" style="margin: auto; padding-left: 20px; padding-right: 20px;">Save</button></form>
+			  </div>
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+</html>
